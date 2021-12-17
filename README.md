@@ -1,0 +1,1 @@
+  Latest iteration of my led matrix driver core. I'm currently doing a complete rewrite of the zynq software, so only the HDL here for the time being. My previous version was able to refresh a 128x32 panel( 24 bit color ) at over 900Hz. 
