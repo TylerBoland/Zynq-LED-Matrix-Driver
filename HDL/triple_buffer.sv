@@ -21,24 +21,24 @@
 
 
 module triple_buffer(
-    input wire resetn,
+    input logic resetn,
     
-    input wire [1:0] buffer_sel,
+    input logic [1:0] buffer_sel,
 
-    input wire clka,
-    input wire [31:0] dina,
-    input wire [11:0] addra,
-    input wire [3:0] wea,
-    input wire wr,
+    input logic clka,
+    input logic [31:0] dina,
+    input logic [11:0] addra,
+    input logic [3:0] wea,
+    input logic wr,
 
-    input wire clkb,
-    output  reg [23:0] douta,
-    output  reg [23:0] doutb,
-    input wire [10:0] addrb
+    input logic clkb,
+    output  logic [23:0] douta,
+    output  logic [23:0] doutb,
+    input logic [10:0] addrb
   );
 
-  reg [1:0] buffer_sel;
-  wire [23:0] b0_d0, b0_d1, b1_d0, b1_d1, b2_d0, b2_d1;
+  logic [1:0] buffer_sel;
+  logic [23:0] b0_d0, b0_d1, b1_d0, b1_d1, b2_d0, b2_d1;
 
   //BUFFERS
   dp_ram buffer_0 (
@@ -102,23 +102,23 @@ endmodule
 
 //MEMORY IS BYTE WRITE ENABLED, WIDTH MUST A MULTIPLY OF A BYTE
 module dp_ram (
-    input wire resetn,
+    input logic resetn,
 
-    input wire clka,
-    input wire [31:0] dina,
-    input wire [11:0] addra,
-    input wire [3:0] wea,
-    input wire wr,
+    input logic clka,
+    input logic [31:0] dina,
+    input logic [11:0] addra,
+    input logic [3:0] wea,
+    input logic wr,
 
-    input wire clkb,
-    output reg [23:0] douta,
-    output reg [23:0] doutb,
-    input wire [10:0] addrb
+    input logic clkb,
+    output logic [23:0] douta,
+    output logic [23:0] doutb,
+    input logic [10:0] addrb
   );
 
-  reg [31:0] mem [4095:0];
-  reg [23:0] s_data_a = {(24){1'b0}};
-  reg [23:0] s_data_b = {(24){1'b0}};
+  logic [31:0] mem [4095:0];
+  logic [23:0] s_data_a = {(24){1'b0}};
+  logic [23:0] s_data_b = {(24){1'b0}};
 
   integer j;
   initial

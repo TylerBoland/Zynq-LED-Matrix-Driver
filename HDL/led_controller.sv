@@ -2,37 +2,37 @@
 
 //LED CONTROLLER MODULE
 module led_controller(
-    input wire clk,
-    input wire resetn,
+    input logic clk,
+    input logic resetn,
 
-    input wire [1:0] buffer_sel,
+    input logic [1:0] buffer_sel,
 
-    output reg [5:0] data,
-    output reg [4:0] row_sel,
-    output reg sclk,
-    output reg lat,
-    output reg oe,
+    output logic [5:0] data,
+    output logic [4:0] row_sel,
+    output logic sclk,
+    output logic lat,
+    output logic oe,
 
-    input wire [31:0] din,
-    input wire [11:0] wraddr,
-    input wire  [3:0] wea,
-    input wire wr
+    input logic [31:0] din,
+    input logic [11:0] wraddr,
+    input logic  [3:0] wea,
+    input logic wr
   );
 
   parameter INIT = 0, LOAD = 1, INCR_RAM = 2, INCR_ROW = 3, LATCH = 4;
 
-  reg [1:0] state, next_state;
-  reg s_sclk, s_lat, s_oe;
-  reg [6:0] s_col, s_next_col;
-  reg [7:0] s_bpp, s_next_bpp;
-  reg [4:0] s_row, s_next_row;
-  reg [10:0] s_ram, s_next_ram;
-  reg [5:0] s_data, s_next_data;
-  reg [5:0] s_data_reg;
-  wire [23:0] tbo_a, tbo_g_a;
-  wire [23:0] tbo_b, tbo_g_b;
+  logic [1:0] state, next_state;
+  logic s_sclk, s_lat, s_oe;
+  logic [6:0] s_col, s_next_col;
+  logic [7:0] s_bpp, s_next_bpp;
+  logic [4:0] s_row, s_next_row;
+  logic [10:0] s_ram, s_next_ram;
+  logic [5:0] s_data, s_next_data;
+  logic [5:0] s_data_reg;
+  logic [23:0] tbo_a, tbo_g_a;
+  logic [23:0] tbo_b, tbo_g_b;
 
-  wire clk60;
+  logic clk60;
   //PLL 100MHZ -> 60MHZ
   PLL PLL_60MHZ(.clk_in(clk), .resetn(resetn), .clk_out(clk60));
 
