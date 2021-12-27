@@ -3,3 +3,5 @@
   
   Raytraced G-Man from HL1, rendering two camera angles at a little over 350hz.
   ![til](https://github.com/TylerBoland/Zynq-LED-Matrix-Driver/blob/main/images/gman_render.gif) 
+  
+  Next release will include support for the ARM A9's Neon FPU, allowing for fast vectorized floating point operations.
